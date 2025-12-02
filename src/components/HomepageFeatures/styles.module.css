@@ -1,0 +1,87 @@
+.features {
+  padding: 60px 0;
+  background: #01040f;
+}
+
+.row {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.col.col--3 {
+  flex: 1 1 22%;
+  max-width: 22%;
+  position: relative;
+}
+
+.neonCard {
+  background: rgba(20, 0, 40, 0.7);
+  border-radius: 1rem;
+  padding: 2rem;
+  text-align: center;
+  color: #fff;
+  overflow: hidden;
+  border: 2px solid transparent;
+  box-shadow: 0 0 20px #d77aff, 0 0 40px #b84fff;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border 0.3s ease;
+}
+
+.neonCard:hover {
+  transform: scale(1.06);
+  box-shadow: 0 0 50px #ff8aff, 0 0 90px #b84fff;
+  border: 2px solid #ff8aff;
+}
+
+/* Card content */
+.cardContent h3 {
+  font-size: 1.5rem;
+  color: #ff8aff;
+  text-shadow: 0 0 5px #ff8aff, 0 0 15px #b84fff;
+  margin-bottom: 1rem;
+}
+
+.cardContent p {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #d0aaff;
+}
+
+/* Animated AI-style particles (glowing neurons) */
+.particles {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background-image: radial-gradient(circle, rgba(255,138,255,0.4) 2px, transparent 2px),
+                    radial-gradient(circle, rgba(184,79,255,0.3) 2px, transparent 2px);
+  background-size: 20px 20px, 30px 30px;
+  background-position: 0 0, 15px 15px;
+  animation: moveParticles 12s linear infinite;
+  pointer-events: none;
+  opacity: 0.3;
+}
+
+@keyframes moveParticles {
+  0% { background-position: 0 0, 15px 15px; }
+  100% { background-position: 40px 40px, 55px 55px; }
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .row {
+    flex-wrap: wrap;
+  }
+  .col.col--3 {
+    flex: 1 1 45%;
+    max-width: 45%;
+    margin-bottom: 2rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .col.col--3 {
+    flex: 1 1 90%;
+    max-width: 90%;
+  }
+}

@@ -1,0 +1,80 @@
+---
+sidebar_position: 3
+title: 'Module 4.3: Metadata and Embeddings'
+---
+
+# Module 4.3: Metadata and Embeddings
+
+After ingesting raw text from our documents, the next critical step is to transform this text into a format that a machine can understand for semantic search: **embeddings**. Alongside this, we must manage **metadata** to ensure our search results are contextual and useful.
+
+## What are Embeddings?
+
+An embedding is a numerical representation (a vector) of text, images, or other data. These vectors are designed such that items with similar semantic meanings are closer together in the vector space. For a RAG system, we use an **embedding model** (e.g., Sentence-BERT, OpenAI's `text-embedding-ada-002`) to convert chunks of our source documents into these vectors.
+
+When a user submits a query, we generate an embedding for the query as well. The retrieval process then becomes a mathematical operation: finding the document vectors that are closest to the query vector. This is far more powerful than keyword matching, as it allows us to find conceptually related information even if the exact words don't match.
+
+## The Importance of Metadata
+
+While embeddings provide semantic context, metadata provides factual, filterable information about our data. For each document or chunk we index, we should store relevant metadata.
+
+Common metadata fields include:
+*   `doc_id`: A unique identifier for the document chunk.
+*   `source`: The original file path or URL.
+*   `file_type`: The type of the document (e.g., PDF, Markdown).
+*   `created_at`: The timestamp of when the document was created or indexed.
+*   `chunk_number`: If the document is split into multiple parts, this indicates the part number.
+
+We can design a `MetadataManager` to handle the storage and retrieval of this information. This manager would typically interact with a database (like SQLite, PostgreSQL, or a NoSQL database) to keep the metadata organized.
+
+Here's a Python class representing our metadata structure:
+
+```python
+from dataclasses import dataclass, field
+import datetime
+from pathlib import Path
+import json
+
+@dataclass
+class Metadata:
+    """A dataclass to hold metadata for each indexed document chunk."""
+    doc_id: str
+    source: str
+    file_type: str
+    created_at: str = field(default_factory=lambda: datetime.datetime.utcnow().isoformat())
+    # Add other relevant fields like author, version, etc.
+
+class MetadataManager:
+    """Manages the storage and retrieval of metadata in a simple JSON file."""
+    def __init__(self, storage_path: str):
+        self.storage_path = Path(storage_path)
+        if not self.storage_path.exists():
+            with open(self.storage_path, 'w') as f:
+                json.dump({}, f)
+
+    def add_metadata(self, metadata: Metadata):
+        """Adds a new metadata entry."""
+        with open(self.storage_path, 'r+') as f:
+            data = json.load(f)
+            data[metadata.doc_id] = metadata.__dict__
+            f.seek(0)
+            json.dump(data, f, indent=4)
+
+    def get_metadata(self, doc_id: str) -> dict | None:
+        """Retrieves metadata for a given document ID."""
+        with open(self.storage_path, 'r') as f:
+            data = json.load(f)
+            return data.get(doc_id)
+
+# Example Usage:
+# metadata_db = MetadataManager("metadata_storage.json")
+# new_doc_meta = Metadata(doc_id="xyz-123", source="/path/to/doc.pdf", file_type="PDF")
+# metadata_db.add_metadata(new_doc_meta)
+```
+
+## The Combined Index
+
+Our final index, often stored in a specialized **vector database** (like Chroma, Pinecone, or Weaviate), contains two key components for each entry:
+1.  **The Embedding Vector:** The numerical representation of the document chunk.
+2.  **The Metadata Payload:** The associated metadata (doc_id, source, etc.).
+
+This combined structure allows us to perform powerful queries. For instance, we could search for "safety protocols" but filter the results to only include documents that are of `file_type: PDF` and were created in the last year. This filtering at the retrieval stage makes the entire RAG pipeline more efficient and accurate.

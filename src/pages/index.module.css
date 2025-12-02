@@ -1,0 +1,135 @@
+.heroBanner{
+position:relative;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center;
+min-height:90vh;
+overflow:hidden;
+color:#fff;
+z-index:1;
+background:radial-gradient(circle at top,#1a002b,#0d0014);
+}
+
+/*desktop image look*/
+.heroImage{
+position:absolute;
+right:5%;
+bottom:10%;
+width:300px;
+max-width:40%;
+z-index:1;
+pointer-events:none;
+filter:blur(3px);
+opacity:0.28;
+animation:float 4s ease-in-out infinite;
+}
+
+/*floating animation*/
+@keyframes float{
+0%,100%{transform:translateY(0);}
+50%{transform:translateY(-15px);}
+}
+
+/*dots animation*/
+.dotWrap{
+position:absolute;
+right:32%;
+top:22%;
+display:flex;
+gap:30px;
+z-index:2;
+pointer-events:none;
+}
+.dot{
+font-size:14px;
+opacity:0.6;
+filter:blur(1px);
+animation:dotMove 5s ease-in-out infinite alternate;
+}
+@keyframes dotMove{
+0%{transform:translateY(0);}
+100%{transform:translateY(-45px);}
+}
+
+/*heading*/
+.hero__title{
+font-size:3.5rem;
+font-weight:900;
+color:#2b083d!important;
+text-shadow:0 0 6px rgba(184,79,255,0.6),0 0 18px #6a0dad;
+z-index:3;
+position:relative;
+}
+
+/*subtitle*/
+.hero__subtitle{
+font-size:1.3rem;
+font-weight:500;
+color:#21062e;
+text-shadow:0 0 6px rgba(184,79,255,0.5);
+z-index:3;
+position:relative;
+}
+
+/*button*/
+.hoverBtn{
+background:linear-gradient(135deg,#9b59b6,#6a0dad);
+color:#fff;
+font-weight:600;
+padding:1rem 2.5rem;
+border-radius:0.8rem;
+transition:all 0.3s ease;
+box-shadow:0 0 20px #d77aff,0 0 40px #b84fff;
+z-index:4;
+}
+.hoverBtn:hover{
+transform:scale(1.1);
+box-shadow:0 0 40px #ff8aff,0 0 80px #b84fff;
+}
+
+/* 📌 Mobile & small devices responsive fix */
+@media(max-width:768px){
+.heroImage{
+width:190px;
+max-width:55%;
+right:auto;
+left:50%;
+bottom:6%;
+transform:translateX(-50%);
+opacity:0.22;
+filter:blur(2px);
+}
+.dotWrap{
+right:auto;
+left:50%;
+top:12%;
+transform:translateX(-50%);
+gap:20px;
+}
+.hero__title{
+font-size:2.2rem;
+}
+.hero__subtitle{
+font-size:1rem;
+padding:0 10px;
+}
+}
+@media(max-width:480px){
+.heroImage{
+width:150px;
+bottom:4%;
+max-width:65%;
+}
+.dotWrap{
+top:10%;
+gap:15px;
+}
+.hero__title{
+font-size:1.8rem;
+}
+.hero__subtitle{
+font-size:0.9rem;
+}
+}

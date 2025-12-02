@@ -1,0 +1,89 @@
+---
+sidebar_position: 2
+title: 'Module 4.2: Data Ingestion and Processing'
+---
+
+# Module 4.2: Data Ingestion and Processing
+
+The foundation of any effective RAG system is its knowledge base. To build this, we must first ingest and process data from various sources. This involves identifying files, parsing their content, and preparing them for the next stage: embedding.
+
+## Handling Different File Types
+
+A robust RAG system should handle multiple document formats, as knowledge is often stored in various types of files. Common formats include plain text (`.txt`), Markdown (`.md`), PDFs (`.pdf`), and more. We can design a system that identifies the file type and uses a specific parser for each.
+
+Here's a conceptual Python implementation for a file-handling mechanism:
+
+```python
+from enum import Enum
+from pathlib import Path
+import fitz  # PyMuPDF for PDFs
+
+class FileType(Enum):
+    TEXT = ".txt"
+    MARKDOWN = ".md"
+    PDF = ".pdf"
+    DOCX = ".docx"
+    UNSUPPORTED = ""
+
+def get_file_type(file_path: Path) -> FileType:
+    """Determines the file type based on its extension."""
+    suffix = file_path.suffix.lower()
+    for file_type in FileType:
+        if suffix == file_type.value:
+            return file_type
+    return FileType.UNSUPPORTED
+
+def read_file_content(file_path: Path) -> str:
+    """Reads the content of a file based on its type."""
+    file_type = get_file_type(file_path)
+    try:
+        if file_type == FileType.TEXT or file_type == FileType.MARKDOWN:
+            with open(file_path, 'r', encoding='utf-8') as f:
+                return f.read()
+        elif file_type == FileType.PDF:
+            with fitz.open(file_path) as doc:
+                return "".join(page.get_text() for page in doc)
+        # Add loaders for other types like DOCX here
+        else:
+            return ""  # Return empty for unsupported types
+    except Exception as e:
+        print(f"Error reading {file_path}: {e}")
+        return ""
+```
+
+This code defines an enumeration for supported file types and provides a simple, extensible way to read content from each.
+
+## Indexing a Directory
+
+To build our knowledge base, we need a process that recursively scans a directory, identifies supported files, reads their content, and prepares them for embedding. This "indexing" process is the first step in populating our vector database.
+
+The function below outlines how you might structure an indexer. It would iterate through a directory and, for each file, extract its content and associate it with a unique ID and its file path.
+
+```python
+import uuid
+from pathlib import Path
+
+def index_directory(directory_path: str):
+    """
+    Recursively finds all supported files in a directory, reads their content,
+    and prepares them for embedding.
+    """
+    root_path = Path(directory_path)
+    for file_path in root_path.rglob('*'):
+        if file_path.is_file() and get_file_type(file_path) != FileType.UNSUPPORTED:
+            content = read_file_content(file_path)
+            if content:
+                # In the next step, we'll send this content to an
+                # embedding model and store it in a vector database.
+                doc_id = str(uuid.uuid4())
+                print(f"Indexed {file_path} with ID {doc_id}")
+                # For now, we just print. Later, this will involve:
+                # 1. Chunking the content.
+                # 2. Generating embeddings for each chunk.
+                # 3. Storing the chunks, embeddings, and metadata.
+
+# Example usage:
+# index_directory("./path/to/your/documents")
+```
+
+This data ingestion pipeline is crucial. The quality of the data we ingest and process directly impacts the performance and accuracy of our RAG system. In the next section, we will explore how to handle the `content` we've extracted by creating embeddings and managing metadata.

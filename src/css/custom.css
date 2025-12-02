@@ -1,0 +1,195 @@
+/**
+ * Global Neon / Futuristic AI Theme
+ * Animated background, glowing elements, neon particles
+ */
+
+/* Primary neon colors */
+:root {
+  --ifm-color-primary: #ff8aff;
+  --ifm-color-primary-dark: #b84fff;
+  --ifm-color-primary-darker: #6a0dad;
+  --ifm-color-background: #01040f;
+  --ifm-color-emphasis-0: #e0d0ff;
+  --ifm-code-font-size: 95%;
+  --docusaurus-highlighted-code-line-bg: rgba(255, 138, 255, 0.1);
+}
+
+/* Dark mode */
+[data-theme='dark'] {
+  --ifm-color-primary: #ff8aff;
+  --ifm-color-primary-dark: #b84fff;
+  --ifm-color-background: #01040f;
+}
+
+/* Full height html & body */
+html, body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  font-family: 'Roboto', 'Segoe UI', sans-serif;
+  color: #fff;
+  background: radial-gradient(circle at top, #0a001a, #01040f);
+  background-attachment: fixed;
+}
+
+/* Neon moving particles */
+body::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 200%;
+  height: 200%;
+  background-image: radial-gradient(#ff8aff 1px, transparent 1px);
+  background-size: 30px 30px;
+  animation: moveParticles 40s linear infinite;
+  opacity: 0.2;
+  pointer-events: none;
+  z-index: 0;
+}
+
+@keyframes moveParticles {
+  0% { transform: translate(0, 0); }
+  100% { transform: translate(-100px, -100px); }
+}
+
+/* Links */
+a {
+  color: var(--ifm-color-primary);
+  transition: all 0.3s ease;
+}
+a:hover {
+  color: var(--ifm-color-primary-light);
+  text-shadow: 0 0 10px #ff8aff, 0 0 20px #b84fff;
+}
+
+/* Buttons */
+.button, .button--secondary, .button--primary {
+  background: linear-gradient(135deg, #9b59b6, #6a0dad);
+  color: #fff;
+  font-weight: 600;
+  padding: 0.8rem 2rem;
+  border-radius: 0.8rem;
+  box-shadow: 0 0 20px #d77aff, 0 0 40px #b84fff;
+  transition: all 0.3s ease;
+}
+.button:hover, .button--secondary:hover, .button--primary:hover {
+  background: linear-gradient(135deg, #d77aff, #b84fff);
+  transform: scale(1.05);
+  box-shadow: 0 0 40px #ff8aff, 0 0 80px #b84fff;
+}
+
+/* Hero */
+.heroBanner {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  min-height: 100vh; /* Full viewport height */
+  overflow: hidden;
+  z-index: 1;
+  color: #fff;
+  background: linear-gradient(120deg, #0a001a, #01040f);
+}
+.heroBanner::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: repeating-linear-gradient(
+    45deg,
+    rgba(138, 43, 226, 0.05),
+    rgba(138, 43, 226, 0.2) 2px,
+    transparent 2px,
+    transparent 20px
+  );
+  animation: rotateLines 20s linear infinite;
+  z-index: 0;
+}
+@keyframes rotateLines {
+  0% { transform: rotate(0deg) translate(0,0); }
+  100% { transform: rotate(360deg) translate(0,0); }
+}
+
+/* Hero Text */
+.hero__title {
+  font-size: 3.5rem;
+  font-weight: 900;
+  color: #ff8aff;
+  text-shadow:
+    0 0 5px #ff8aff,
+    0 0 10px #ff8aff,
+    0 0 20px #b84fff,
+    0 0 40px #6a0dad;
+  z-index: 2;
+  animation: glowText 2s ease-in-out infinite alternate;
+}
+.hero__subtitle {
+  font-size: 1.3rem;
+  color: #d0aaff;
+  margin-top: 1rem;
+  line-height: 1.6;
+  text-shadow: 0 0 5px #b84fff;
+  z-index: 2;
+  animation: glowText 3s ease-in-out infinite alternate;
+}
+@keyframes glowText {
+  0% { text-shadow: 0 0 5px #ff8aff, 0 0 10px #b84fff; }
+  50% { text-shadow: 0 0 10px #ff8aff, 0 0 20px #b84fff; }
+  100% { text-shadow: 0 0 5px #ff8aff, 0 0 10px #b84fff; }
+}
+
+/* Feature Cards */
+.neonCard {
+  background: rgba(30,0,50,0.6);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  margin: 1rem;
+  border: 1px solid #6a0dad;
+  transition: all 0.4s ease;
+  position: relative;
+}
+.neonCard:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 0 20px #d77aff, 0 0 40px #b84fff, 0 0 60px #ff8aff;
+}
+/* Animated dots in cards */
+.neonCard::after {
+  content: '';
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #ff8aff;
+  top: 10%;
+  left: 90%;
+  animation: moveDot 3s infinite linear;
+}
+@keyframes moveDot {
+  0% { transform: translate(0,0); }
+  50% { transform: translate(-10px, 10px); }
+  100% { transform: translate(0,0); }
+}
+
+/* Navbar & Footer */
+.navbar {
+  background: rgba(10,0,30,0.85);
+  box-shadow: 0 0 10px #b84fff;
+}
+.footer {
+  background: rgba(10,0,30,0.85);
+  color: #d0aaff;
+  border-top: 1px solid #6a0dad;
+}
+
+/* Headings globally */
+h1, h2, h3, h4, h5, h6 {
+  color: #ff8aff;
+  text-shadow: 0 0 5px #ff8aff, 0 0 10px #b84fff;
+}

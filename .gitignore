@@ -1,0 +1,17 @@
+# Node
+node_modules/
+
+# Build output
+build/
+.docusaurus/
+
+# Python
+assistant_core/__pycache__/
+assistant_core/.pytest_cache/
+assistant_core/venv/
+
+# Env files
+.env
+.vercel
+.next
+

@@ -1,0 +1,62 @@
+---
+sidebar_position: 4
+title: 'Module 4.4: Serving the UI with React'
+---
+
+import MarkdownRenderer from '@site/src/components/MarkdownRenderer';
+
+# Module 4.4: Serving the UI with React and MDX
+
+Once our RAG pipeline is functional—able to retrieve relevant documents and generate answers—we need a user interface (UI) to interact with it. A web-based UI is a common choice, and frameworks like React are perfect for building dynamic, responsive frontends.
+
+MDX, the format these documents are written in, is particularly powerful because it allows us to embed and execute React components directly within Markdown content.
+
+## Displaying Markdown Content in React
+
+A key feature of a RAG UI is the ability to display retrieved content, which is often in Markdown format. To render Markdown correctly in a React application, we can use a component that wraps a library like `react-markdown`.
+
+Below is an example of how you might use such a component.
+
+```jsx
+// Example usage within your application:
+const retrievedMarkdown = `
+# Safety Protocol XR-5
+
+This document outlines the safety protocol for the **XR-5 robotic arm**.
+
+- **Emergency Stop:** The emergency stop button is located on the main control panel.
+- **Operating Speed:** Do not exceed 80% of maximum speed in training mode.
+- **Maintenance:** Weekly diagnostic checks are mandatory.
+`;
+
+<MarkdownRenderer markdownContent={retrievedMarkdown} />
+```
+
+### Live Example
+
+Here is the `MarkdownRenderer` component in action, rendering a sample document that our RAG system might have retrieved. This demonstrates how we can present source material to the user for verification.
+
+<div style={{marginTop: '20px'}}>
+  <MarkdownRenderer markdownContent={`
+# Safety Protocol XR-5
+
+This document outlines the safety protocol for the **XR-5 robotic arm**.
+
+- **Emergency Stop:** The emergency stop button is located on the main control panel.
+- **Operating Speed:** Do not exceed 80% of maximum speed in training mode.
+- **Maintenance:** Weekly diagnostic checks are mandatory.
+`} />
+</div>
+
+
+## Building a Complete RAG UI
+
+A complete UI for a RAG system would typically include:
+
+1.  **A Search Bar:** An input field where the user can type their query.
+2.  **A Results Display Area:** A section to show the final, generated answer from the LLM.
+3.  **A Source/Citation Display:** A component, like our `MarkdownRenderer`, that shows the original source text retrieved by the RAG pipeline. This is crucial for transparency and allows the user to verify the LLM's answer against the source material.
+4.  **Loading and Error States:** Visual feedback to inform the user when the system is processing a query or if an error has occurred.
+5.  **Filtering Options:** UI elements (like dropdowns or checkboxes) that allow users to filter the search by metadata fields (e.g., file type, creation date).
+
+This module provides the conceptual building blocks for a RAG system. By combining the data ingestion and embedding logic from the previous sections with a user-facing application built in React, you can create a powerful, end-to-end AI system capable of reasoning about your private knowledge base.

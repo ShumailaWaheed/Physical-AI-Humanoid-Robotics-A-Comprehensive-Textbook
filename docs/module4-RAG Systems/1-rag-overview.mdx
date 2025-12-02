@@ -1,0 +1,36 @@
+---
+sidebar_position: 5
+title: 'Module 4.1: Introduction to RAG Systems'
+---
+
+# Module 4.1: Introduction to Retrieval-Augmented Generation (RAG)
+
+## The Challenge of Knowledge in AI
+
+Large Language Models (LLMs) possess a vast, general-purpose knowledge base learned from their training data. However, this knowledge is static—it doesn't include proprietary, real-time, or domain-specific information. How can we empower an AI system, such as a robotics control interface or a diagnostic tool, to reason about information it was never trained on? The answer lies in **Retrieval-Augmented Generation (RAG)**.
+
+## What is RAG?
+
+RAG is a powerful architectural pattern that bridges the gap between the static knowledge of LLMs and external, dynamic data sources. Instead of relying solely on its internal memory, a RAG system first retrieves relevant information from a knowledge base and then uses that information to "augment" the prompt sent to an LLM.
+
+The core workflow of a RAG system is as follows:
+
+1.  **User Query:** The process begins when a user asks a question (e.g., "What is the safety protocol for the XR-5 robotic arm?").
+2.  **Retrieval:** The system searches a specialized knowledge base (e.g., a vector database containing technical manuals) to find documents or text chunks that are semantically similar to the user's query.
+3.  **Augmentation:** The retrieved, relevant text is combined with the original user query to form a new, highly contextualized prompt.
+4.  **Generation:** This augmented prompt is sent to the LLM, which uses the provided context to generate a precise, fact-based answer.
+
+This approach offers several advantages over simply fine-tuning a model:
+*   **Access to Real-Time Information:** RAG allows LLMs to access and reason about the most current data available.
+*   **Reduced Hallucinations:** By grounding the model's response in factual, retrieved data, the likelihood of generating incorrect or fabricated information is significantly reduced.
+*   **Verifiability:** Since the generated answer is based on specific sources, the system can cite these sources, allowing users to verify the information.
+*   **Cost-Effective:** Indexing new information is far cheaper and faster than retraining or fine-tuning an entire LLM.
+
+## RAG in AI-Native Robotics
+
+For an AI-native robot, RAG is a game-changer. Imagine a humanoid service robot in a factory. It can use RAG to:
+*   **Access technical manuals** to diagnose its own hardware faults.
+*   **Consult floor plans and inventory databases** to navigate and locate items efficiently.
+*   **Read real-time safety alerts** to adapt its behavior and avoid hazards.
+
+This ability to query and integrate knowledge on the fly is a cornerstone of creating truly autonomous and intelligent physical systems. In this module, we will build the foundational components of a RAG system, from ingesting data to serving a user interface.

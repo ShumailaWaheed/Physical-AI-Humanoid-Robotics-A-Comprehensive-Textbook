@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  assistant_core:
+    build:
+      context: ./assistant_core
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./assistant_core/app:/app/app
+      - ./assistant_core/requirements.txt:/app/requirements.txt
+    # command: uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
+    # Uncomment the above line and comment the 'command' in Dockerfile for local development with hot-reloading

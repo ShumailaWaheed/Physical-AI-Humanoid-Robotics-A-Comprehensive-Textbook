@@ -1,0 +1,7 @@
+fastapi
+uvicorn
+pydantic
+qdrant-client
+beautifulsoup4
+langchain-text-splitters
+google-generativeai
