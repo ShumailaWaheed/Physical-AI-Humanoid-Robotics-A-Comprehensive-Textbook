@@ -30,8 +30,17 @@ const config: Config = {
       'classic',
       {
         docs: {
+          path: 'docs', // Specify the base path for docs
+          include: [
+            'introduction/**/*.md',
+            'module1-ros2/**/*.md',
+            'module2-digital-twin/**/*.md',
+            'module3-ai-robot-brain/**/*.md',
+            'module4-vla-capstone/**/*.md',
+          ],
           sidebarPath: './sidebars.ts',
           editUrl: 'https://github.com/your-username/physical-ai-robotics-book/edit/main/',
+          routeBasePath: '/', // Serve docs from the root of the site
         },
         blog: {
           showReadingTime: true,
@@ -67,9 +76,9 @@ const config: Config = {
       items: [
         {
           type: 'docSidebar',
-          sidebarId: 'tutorialSidebar',
+          sidebarId: 'bookSidebar',
           position: 'left',
-          label: 'Tutorial',
+          label: 'Book',
         },
         {to: '/blog', label: 'Blog', position: 'left'},
         {

@@ -1,5 +1,7 @@
 # Node
 node_modules/
+*.log
+.env*
 
 # Build output
 build/
@@ -15,3 +17,9 @@ assistant_core/venv/
 .vercel
 .next
 
+# Universal
+.DS_Store
+Thumbs.db
+*.tmp
+*.swp
+.vscode/

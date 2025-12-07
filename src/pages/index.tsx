@@ -38,7 +38,7 @@ Learn embodied intelligence, robot perception, motion planning
 and AI-driven physical autonomy using ROS 2, Gazebo, Unity and NVIDIA Isaac.
 </p>
 <div className={styles.buttons}>
-<Link className={clsx('button button--secondary button--lg',styles.hoverBtn)}to='/docs/intro'>
+<Link className={clsx('button button--secondary button--lg',styles.hoverBtn)}to='/docs/introduction/course-overview'>
 Start Learning 🚀
 </Link>
 </div>
