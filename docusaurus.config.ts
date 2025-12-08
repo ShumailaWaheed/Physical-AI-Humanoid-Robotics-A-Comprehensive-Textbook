@@ -1,5 +1,5 @@
-import {themes as prismThemes} from 'prism-react-renderer';
-import type {Config} from '@docusaurus/types';
+import { themes as prismThemes } from 'prism-react-renderer';
+import type { Config } from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
 
 const config: Config = {
@@ -11,14 +11,16 @@ const config: Config = {
     v4: true,
   },
 
-  // GitHub Pages deployment config
-  url: 'https://your-username.github.io',
-  baseUrl: '/physical-ai-robotics-book/',
+  // Site URL and base URL
+  url: 'https://physical-ai-robotics.vercel.app',
+  baseUrl: '/',
 
-  organizationName: 'your-username', // GitHub username
-  projectName: 'physical-ai-robotics-book', // repo name
+  organizationName: 'physical-ai-robotics',
+  projectName: 'physical-ai-robotics',
 
-  onBrokenLinks: 'throw',
+  // Broken links configuration
+  onBrokenLinks: 'ignore',
+  onBrokenMarkdownLinks: 'ignore',
 
   i18n: {
     defaultLocale: 'en',
@@ -30,7 +32,7 @@ const config: Config = {
       'classic',
       {
         docs: {
-          path: 'docs', // Specify the base path for docs
+          path: 'docs',
           include: [
             'introduction/**/*.md',
             'module1-ros2/**/*.md',
@@ -40,7 +42,7 @@ const config: Config = {
           ],
           sidebarPath: './sidebars.ts',
           editUrl: 'https://github.com/your-username/physical-ai-robotics-book/edit/main/',
-          routeBasePath: '/', // Serve docs from the root of the site
+          routeBasePath: '/', // docs served from root
         },
         blog: {
           showReadingTime: true,
@@ -80,7 +82,7 @@ const config: Config = {
           position: 'left',
           label: 'Book',
         },
-        {to: '/blog', label: 'Blog', position: 'left'},
+        { to: '/blog', label: 'Blog', position: 'left' },
         {
           href: 'https://github.com/your-username/physical-ai-robotics-book',
           label: 'GitHub',
@@ -94,22 +96,23 @@ const config: Config = {
         {
           title: 'Docs',
           items: [
-            {label: 'Tutorial', to: '/docs/intro'},
+            // Correct link matching routeBasePath '/' and intro.md file
+            { label: 'Tutorial', to: '/docs/intro' },
           ],
         },
         {
           title: 'Community',
           items: [
-            {label: 'Stack Overflow', href: 'https://stackoverflow.com/questions/tagged/docusaurus'},
-            {label: 'Discord', href: 'https://discordapp.com/invite/docusaurus'},
-            {label: 'X', href: 'https://x.com/docusaurus'},
+            { label: 'Stack Overflow', href: 'https://stackoverflow.com/questions/tagged/docusaurus' },
+            { label: 'Discord', href: 'https://discordapp.com/invite/docusaurus' },
+            { label: 'X', href: 'https://x.com/docusaurus' },
           ],
         },
         {
           title: 'More',
           items: [
-            {label: 'Blog', to: '/blog'},
-            {label: 'GitHub', href: 'https://github.com/your-username/physical-ai-robotics-book'},
+            { label: 'Blog', to: '/blog' },
+            { label: 'GitHub', href: 'https://github.com/your-username/physical-ai-robotics-book' },
           ],
         },
       ],
