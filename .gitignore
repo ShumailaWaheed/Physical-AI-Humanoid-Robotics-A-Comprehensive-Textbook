@@ -11,6 +11,7 @@ build/
 assistant_core/__pycache__/
 assistant_core/.pytest_cache/
 assistant_core/venv/
+venv/
 
 # Env files
 .env
@@ -23,3 +24,4 @@ Thumbs.db
 *.tmp
 *.swp
 .vscode/
+
