@@ -68,12 +68,12 @@ const config: Config = {
       respectPrefersColorScheme: true,
     },
     navbar: {
-      title: 'HumanoAI',
+      title: 'Humanoids & Physical AI',
       logo: {
-        alt: 'Physical AI & Humanoid Robotics Logo',
+        alt: 'Humanoids & Physical AI Logo',
         src: 'img/logo.png',
-        width: 60,
-        height: 60,
+        width: "50px",
+        height: "60px"
       },
       items: [
         {
@@ -84,7 +84,7 @@ const config: Config = {
         },
         { to: '/blog', label: 'Blog', position: 'left' },
         {
-          href: 'https://github.com/your-username/physical-ai-robotics-book',
+          href: 'https://github.com/ShumailaWaheed/Physical-AI-Humanoid-Robotics-A-Comprehensive-Textbook.git',
           label: 'GitHub',
           position: 'right',
         },
@@ -94,29 +94,15 @@ const config: Config = {
       style: 'dark',
       links: [
         {
-          title: 'Docs',
           items: [
-            // Correct link matching routeBasePath '/' and intro.md file
-            { label: 'Tutorial', to: '/docs/intro' },
-          ],
-        },
-        {
-          title: 'Community',
-          items: [
-            { label: 'Stack Overflow', href: 'https://stackoverflow.com/questions/tagged/docusaurus' },
-            { label: 'Discord', href: 'https://discordapp.com/invite/docusaurus' },
-            { label: 'X', href: 'https://x.com/docusaurus' },
-          ],
-        },
-        {
-          title: 'More',
-          items: [
-            { label: 'Blog', to: '/blog' },
-            { label: 'GitHub', href: 'https://github.com/your-username/physical-ai-robotics-book' },
+            { label: 'Robotic Nervous System (ROS 2)', to: '/module1-ros2/ros2-fundamentals' },
+            { label: 'Digital Twin (Gazebo & Unity)', to: '/module2-digital-twin/digital-twins-in-robotics' },
+            { label: 'AI-Robot Brain (NVIDIA Isaac)', to: '/module3-ai-robot-brain/isaac-sim-overview' },
+            { label: 'Vision-Language-Action (VLA + LLMs)', to: '/module4-vla-capstone/vla-fundamentals' },
           ],
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} Physical AI & Humanoid Robotics. Built with Docusaurus.`,
+      copyright: 'Shumaila Waheed',
     },
     prism: {
       theme: prismThemes.github,

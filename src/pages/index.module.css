@@ -1,135 +1,181 @@
-.heroBanner{
-position:relative;
-display:flex;
-flex-direction:column;
-justify-content:center;
-align-items:center;
-text-align:center;
-min-height:90vh;
-overflow:hidden;
-color:#fff;
-z-index:1;
-background:radial-gradient(circle at top,#1a002b,#0d0014);
+
+/**
+ * CSS files with the .module.css suffix will be treated as CSS modules
+ * and scoped locally.
+ */
+
+:root {
+  --ifm-color-primary: #21af90;
+  --ifm-color-primary-dark: #1e9d82;
+  --ifm-color-primary-darker: #1c927a;
+  --ifm-color-primary-darkest: #187763;
+  --ifm-color-primary-light: #24c19e;
+  --ifm-color-primary-lighter: #27c9a6;
+  --ifm-color-primary-lightest: #2ad2ae;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
 }
 
-/*desktop image look*/
-.heroImage{
-position:absolute;
-right:5%;
-bottom:10%;
-width:300px;
-max-width:40%;
-z-index:1;
-pointer-events:none;
-filter:blur(3px);
-opacity:0.28;
-animation:float 4s ease-in-out infinite;
+.heroBanner {
+  padding: 4rem 0;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  background-color: var(--ifm-background-color);
 }
 
-/*floating animation*/
-@keyframes float{
-0%,100%{transform:translateY(0);}
-50%{transform:translateY(-15px);}
+@media screen and (max-width: 996px) {
+  .heroBanner {
+    padding: 2rem;
+  }
 }
 
-/*dots animation*/
-.dotWrap{
-position:absolute;
-right:32%;
-top:22%;
-display:flex;
-gap:30px;
-z-index:2;
-pointer-events:none;
-}
-.dot{
-font-size:14px;
-opacity:0.6;
-filter:blur(1px);
-animation:dotMove 5s ease-in-out infinite alternate;
-}
-@keyframes dotMove{
-0%{transform:translateY(0);}
-100%{transform:translateY(-45px);}
+.heroTitle {
+  color: var(--ifm-color-primary);
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
 }
 
-/*heading*/
-.hero__title{
-font-size:3.5rem;
-font-weight:900;
-color:#2b083d!important;
-text-shadow:0 0 6px rgba(184,79,255,0.6),0 0 18px #6a0dad;
-z-index:3;
-position:relative;
+.heroSubtitle {
+  color: var(--ifm-font-color-base);
+  font-size: 1.5rem;
+  font-weight: 500;
+  margin-bottom: 1.5rem;
 }
 
-/*subtitle*/
-.hero__subtitle{
-font-size:1.3rem;
-font-weight:500;
-color:#21062e;
-text-shadow:0 0 6px rgba(184,79,255,0.5);
-z-index:3;
-position:relative;
+.heroDescription {
+  color: var(--ifm-font-color-base);
+  font-size: 1.1rem;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.6;
 }
 
-/*button*/
-.hoverBtn{
-background:linear-gradient(135deg,#9b59b6,#6a0dad);
-color:#fff;
-font-weight:600;
-padding:1rem 2.5rem;
-border-radius:0.8rem;
-transition:all 0.3s ease;
-box-shadow:0 0 20px #d77aff,0 0 40px #b84fff;
-z-index:4;
-}
-.hoverBtn:hover{
-transform:scale(1.1);
-box-shadow:0 0 40px #ff8aff,0 0 80px #b84fff;
+.buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2rem;
 }
 
-/* 📌 Mobile & small devices responsive fix */
-@media(max-width:768px){
-.heroImage{
-width:190px;
-max-width:55%;
-right:auto;
-left:50%;
-bottom:6%;
-transform:translateX(-50%);
-opacity:0.22;
-filter:blur(2px);
+.features {
+  display: flex;
+  align-items: center;
+  padding: 2rem 0;
+  width: 100%;
 }
-.dotWrap{
-right:auto;
-left:50%;
-top:12%;
-transform:translateX(-50%);
-gap:20px;
+
+.sectionTitle {
+  text-align: center;
+  font-size: 2.2rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: var(--ifm-color-primary);
 }
-.hero__title{
-font-size:2.2rem;
+
+.sectionDescription {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 2.5rem auto;
+  font-size: 1.1rem;
+  line-height: 1.6;
 }
-.hero__subtitle{
-font-size:1rem;
-padding:0 10px;
+
+.cardContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px; /* Space between cards */
+  justify-content: center;
+  margin-top: 2rem;
 }
+
+.card {
+  flex: 0 1 calc(25% - 15px); /* Four cards per row on desktop */
+  min-width: 220px;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+  border-radius: 12px;
+  padding: 20px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background-color: var(--ifm-card-background-color);
+  border: 1px solid var(--ifm-toc-border-color); /* subtle border */
+  display: block; /* Make the whole card area a block for the link */
+  color: var(--ifm-font-color-base); /* Ensure text color is inherited */
 }
-@media(max-width:480px){
-.heroImage{
-width:150px;
-bottom:4%;
-max-width:65%;
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+  text-decoration: none; /* Remove underline from link on hover */
+  color: var(--ifm-font-color-base);
 }
-.dotWrap{
-top:10%;
-gap:15px;
+
+.cardTitle {
+  color: var(--ifm-color-primary);
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: 0.8rem;
 }
-.hero__title{
-font-size:1.8rem;
+
+.outcomeCard .cardTitle {
+  font-size: 1.1rem;
 }
-.hero__subtitle{
-font-size:0.9rem;
+
+.chatbotSection {
+    padding: 3rem 0;
+    text-align: center;
 }
+
+.chatbotCallout {
+    background: linear-gradient(45deg, var(--ifm-color-primary-dark), var(--ifm-color-primary-light));
+    color: white;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+    border-radius: 12px;
+    padding: 30px 20px;
+    max-width: 800px;
+    margin: 0 auto;
+    font-size: 1.3rem;
+    font-weight: 600;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    border: 1px solid var(--ifm-color-primary-dark);
+}
+
+.chatbotCallout:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.2);
+}
+
+.chatbotCallout p {
+  margin: 0;
+}
+
+
+/* Responsive Adjustments */
+
+/* Tablet (2 cards per row) */
+@media screen and (max-width: 1024px) {
+  .card {
+    flex: 0 1 calc(50% - 15px); /* Two cards per row */
+  }
+}
+
+/* Mobile (1 card per row) */
+@media screen and (max-width: 640px) {
+  .card {
+    flex: 0 1 100%; /* One card per row */
+  }
+  .heroTitle {
+    font-size: 2.2rem;
+  }
+  .heroSubtitle {
+    font-size: 1.2rem;
+  }
+  .sectionTitle {
+    font-size: 1.8rem;
+  }
+  .chatbotCallout {
+    padding: 25px 15px;
+    font-size: 1.1rem;
+  }
 }

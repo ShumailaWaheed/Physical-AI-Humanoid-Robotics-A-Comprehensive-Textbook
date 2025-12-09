@@ -1,195 +1,90 @@
 /**
- * Global Neon / Futuristic AI Theme
- * Animated background, glowing elements, neon particles
+ * Any CSS included here will be global. The classic template
+ * bundles Infima by default. Infima is a CSS framework designed to
+ * work well for content-centric websites.
  */
 
-/* Primary neon colors */
+/* You can override the default Infima variables here. */
 :root {
-  --ifm-color-primary: #ff8aff;
-  --ifm-color-primary-dark: #b84fff;
-  --ifm-color-primary-darker: #6a0dad;
-  --ifm-color-background: #01040f;
-  --ifm-color-emphasis-0: #e0d0ff;
+  --ifm-color-primary: #21af90;
+  --ifm-color-primary-dark: #1e9d82;
+  --ifm-color-primary-darker: #1c927a;
+  --ifm-color-primary-darkest: #187763;
+  --ifm-color-primary-light: #24c19e;
+  --ifm-color-primary-lighter: #27c9a6;
+  --ifm-color-primary-lightest: #2ad2ae;
   --ifm-code-font-size: 95%;
-  --docusaurus-highlighted-code-line-bg: rgba(255, 138, 255, 0.1);
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
 }
 
-/* Dark mode */
+/* For readability concerns, you should choose a lighter palette in dark mode. */
 [data-theme='dark'] {
-  --ifm-color-primary: #ff8aff;
-  --ifm-color-primary-dark: #b84fff;
-  --ifm-color-background: #01040f;
+  --ifm-color-primary: #21af90;
+  --ifm-color-primary-dark: #1e9d82;
+  --ifm-color-primary-darker: #1c927a;
+  --ifm-color-primary-darkest: #187763;
+  --ifm-color-primary-light: #24c19e;
+  --ifm-color-primary-lighter: #27c9a6;
+  --ifm-color-primary-lightest: #2ad2ae;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
 }
 
-/* Full height html & body */
-html, body {
-  height: 100%;
-  width: 100%;
-  margin: 0;
-  padding: 0;
-  overflow-x: hidden;
-  font-family: 'Roboto', 'Segoe UI', sans-serif;
-  color: #fff;
-  background: radial-gradient(circle at top, #0a001a, #01040f);
-  background-attachment: fixed;
+/* Custom Footer Styles */
+.footer {
+  background-color: var(--ifm-background-surface-color);
+  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.05);
+  border-top: 1px solid var(--ifm-toc-border-color);
+  padding: 2rem 1rem 1.5rem 1rem; /* Adjusted padding */
 }
 
-/* Neon moving particles */
-body::after {
-  content: '';
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 200%;
-  height: 200%;
-  background-image: radial-gradient(#ff8aff 1px, transparent 1px);
-  background-size: 30px 30px;
-  animation: moveParticles 40s linear infinite;
-  opacity: 0.2;
-  pointer-events: none;
-  z-index: 0;
+.footer--dark {
+  background-color: #1c1e21; /* A slightly softer dark background */
 }
 
-@keyframes moveParticles {
-  0% { transform: translate(0, 0); }
-  100% { transform: translate(-100px, -100px); }
+/* This container holds the single, untitled column of links */
+.footer__links {
+  justify-content: center; /* Center the single column container */
+  margin-bottom: 2rem;
 }
 
-/* Links */
-a {
-  color: var(--ifm-color-primary);
-  transition: all 0.3s ease;
-}
-a:hover {
-  color: var(--ifm-color-primary-light);
-  text-shadow: 0 0 10px #ff8aff, 0 0 20px #b84fff;
+/* The single column itself */
+.footer__col {
+  flex: 0 1 auto; /* Don't grow, just fit the content */
 }
 
-/* Buttons */
-.button, .button--secondary, .button--primary {
-  background: linear-gradient(135deg, #9b59b6, #6a0dad);
-  color: #fff;
-  font-weight: 600;
-  padding: 0.8rem 2rem;
-  border-radius: 0.8rem;
-  box-shadow: 0 0 20px #d77aff, 0 0 40px #b84fff;
-  transition: all 0.3s ease;
-}
-.button:hover, .button--secondary:hover, .button--primary:hover {
-  background: linear-gradient(135deg, #d77aff, #b84fff);
-  transform: scale(1.05);
-  box-shadow: 0 0 40px #ff8aff, 0 0 80px #b84fff;
-}
-
-/* Hero */
-.heroBanner {
-  position: relative;
+/* This is the list of module links */
+.footer__items {
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  text-align: center;
-  min-height: 100vh; /* Full viewport height */
-  overflow: hidden;
-  z-index: 1;
-  color: #fff;
-  background: linear-gradient(120deg, #0a001a, #01040f);
-}
-.heroBanner::before {
-  content: '';
-  position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: repeating-linear-gradient(
-    45deg,
-    rgba(138, 43, 226, 0.05),
-    rgba(138, 43, 226, 0.2) 2px,
-    transparent 2px,
-    transparent 20px
-  );
-  animation: rotateLines 20s linear infinite;
-  z-index: 0;
-}
-@keyframes rotateLines {
-  0% { transform: rotate(0deg) translate(0,0); }
-  100% { transform: rotate(360deg) translate(0,0); }
+  gap: 1rem 2rem; /* Row and column gap for wrapping links */
+  list-style: none;
+  padding-left: 0;
 }
 
-/* Hero Text */
-.hero__title {
-  font-size: 3.5rem;
-  font-weight: 900;
-  color: #ff8aff;
-  text-shadow:
-    0 0 5px #ff8aff,
-    0 0 10px #ff8aff,
-    0 0 20px #b84fff,
-    0 0 40px #6a0dad;
-  z-index: 2;
-  animation: glowText 2s ease-in-out infinite alternate;
-}
-.hero__subtitle {
-  font-size: 1.3rem;
-  color: #d0aaff;
-  margin-top: 1rem;
-  line-height: 1.6;
-  text-shadow: 0 0 5px #b84fff;
-  z-index: 2;
-  animation: glowText 3s ease-in-out infinite alternate;
-}
-@keyframes glowText {
-  0% { text-shadow: 0 0 5px #ff8aff, 0 0 10px #b84fff; }
-  50% { text-shadow: 0 0 10px #ff8aff, 0 0 20px #b84fff; }
-  100% { text-shadow: 0 0 5px #ff8aff, 0 0 10px #b84fff; }
+.footer__item {
+  margin-bottom: 0; /* Remove default bottom margin */
 }
 
-/* Feature Cards */
-.neonCard {
-  background: rgba(30,0,50,0.6);
-  border-radius: 1rem;
-  padding: 1.5rem;
-  margin: 1rem;
-  border: 1px solid #6a0dad;
-  transition: all 0.4s ease;
-  position: relative;
-}
-.neonCard:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 0 20px #d77aff, 0 0 40px #b84fff, 0 0 60px #ff8aff;
-}
-/* Animated dots in cards */
-.neonCard::after {
-  content: '';
-  position: absolute;
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: #ff8aff;
-  top: 10%;
-  left: 90%;
-  animation: moveDot 3s infinite linear;
-}
-@keyframes moveDot {
-  0% { transform: translate(0,0); }
-  50% { transform: translate(-10px, 10px); }
-  100% { transform: translate(0,0); }
+.footer__link-item {
+  color: var(--ifm-font-color-secondary);
+  transition: color 0.3s ease;
+  font-size: 1rem;
+  font-weight: 500;
 }
 
-/* Navbar & Footer */
-.navbar {
-  background: rgba(10,0,30,0.85);
-  box-shadow: 0 0 10px #b84fff;
-}
-.footer {
-  background: rgba(10,0,30,0.85);
-  color: #d0aaff;
-  border-top: 1px solid #6a0dad;
+.footer__link-item:hover {
+  color: var(--ifm-color-primary);
+  text-decoration: none;
 }
 
-/* Headings globally */
-h1, h2, h3, h4, h5, h6 {
-  color: #ff8aff;
-  text-shadow: 0 0 5px #ff8aff, 0 0 10px #b84fff;
+/* Styling for the author name in the copyright section */
+.footer__copyright {
+  color: var(--ifm-color-primary);
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-top: 1.5rem;
 }
+
+
