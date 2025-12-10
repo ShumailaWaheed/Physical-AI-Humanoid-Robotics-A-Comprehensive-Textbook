@@ -15,8 +15,8 @@ const config: Config = {
   url: 'https://physical-ai-robotics.vercel.app',
   baseUrl: '/',
 
-  organizationName: 'physical-ai-robotics',
-  projectName: 'physical-ai-robotics',
+  organizationName: 'ShumailaWaheed',
+  projectName: 'Physical-AI-Humanoid-Robotics-A-Comprehensive-Textbook',
 
   // Broken links configuration
   onBrokenLinks: 'ignore',
@@ -41,19 +41,12 @@ const config: Config = {
             'module4-vla-capstone/**/*.md',
           ],
           sidebarPath: './sidebars.ts',
-          editUrl: 'https://github.com/your-username/physical-ai-robotics-book/edit/main/',
+          editUrl: 'https://github.com/ShumailaWaheed/Physical-AI-Humanoid-Robotics-A-Comprehensive-Textbook/edit/main/',
           routeBasePath: '/', // docs served from root
         },
         blog: {
           showReadingTime: true,
-          feedOptions: {
-            type: ['rss', 'atom'],
-            xslt: true,
-          },
-          editUrl: 'https://github.com/your-username/physical-ai-robotics-book/edit/main/',
-          onInlineTags: 'warn',
-          onInlineAuthors: 'warn',
-          onUntruncatedBlogPosts: 'warn',
+          editUrl: 'https://github.com/ShumailaWaheed/Physical-AI-Humanoid-Robotics-A-Comprehensive-Textbook/edit/main/',
         },
         theme: {
           customCss: './src/css/custom.css',
@@ -72,8 +65,8 @@ const config: Config = {
       logo: {
         alt: 'Humanoids & Physical AI Logo',
         src: 'img/logo.png',
-        width: "50px",
-        height: "60px"
+        width: '50px',
+        height: '60px',
       },
       items: [
         {
@@ -84,7 +77,7 @@ const config: Config = {
         },
         { to: '/blog', label: 'Blog', position: 'left' },
         {
-          href: 'https://github.com/ShumailaWaheed/Physical-AI-Humanoid-Robotics-A-Comprehensive-Textbook.git',
+          href: 'https://github.com/ShumailaWaheed/Physical-AI-Humanoid-Robotics-A-Comprehensive-Textbook',
           label: 'GitHub',
           position: 'right',
         },
@@ -94,6 +87,7 @@ const config: Config = {
       style: 'dark',
       links: [
         {
+          title: 'Modules',
           items: [
             { label: 'Robotic Nervous System (ROS 2)', to: '/module1-ros2/ros2-fundamentals' },
             { label: 'Digital Twin (Gazebo & Unity)', to: '/module2-digital-twin/digital-twins-in-robotics' },
