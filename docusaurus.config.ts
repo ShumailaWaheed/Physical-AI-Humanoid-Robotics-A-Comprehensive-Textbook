@@ -12,7 +12,7 @@ const config: Config = {
   },
 
   // Site URL and base URL
-  url: 'https://physical-ai-robotics.vercel.app',
+  url: 'https://robotic-book-aq1mjt60z-shumaila-waheeds-projects.vercel.app',
   baseUrl: '/',
 
   organizationName: 'ShumailaWaheed',
